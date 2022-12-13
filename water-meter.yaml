@@ -35,25 +35,32 @@ wifi:
 
 captive_portal:
 
-
-
 text_sensor:
-- platform: custom
-  lambda: |-
-    auto my_custom_sensor = new MyCustomSensor();
-    App.register_component(my_custom_sensor);
-    return {my_custom_sensor->water_sensor, my_custom_sensor->id_sensor};
-  text_sensors:
-  - name: "Water meter usage"
-  - name: "Water meter ID"
+  - platform: custom
+    lambda: |-
+      auto textsensor = new MyTextSensor();
+      App.register_component(textsensor);
+      return {textsensor->my_text_sensor};
+    text_sensors:
+      - name: Id licznika wody      #text
+        filters:
+        - to_upper:
 
 sensor:
-- platform: dht
-  pin: D4  							#*****************use your pin***************************
-  model: DHT22
-  temperature:
-    name: "Temperature"
-  humidity:
-    name: Humidity"
-  update_interval: 5s
-
+  - platform: custom
+    lambda: |-
+      auto sensor = new MySensor();
+      App.register_component(sensor);
+      return {sensor->my_sensor};
+    sensors:
+      - name: Stan licznika wody    #float value
+        unit_of_measurement: L
+        accuracy_decimals: 0
+  - platform: dht     #DHT22 sensor
+    pin: D4           #*****************use your pin***************************
+    model: DHT22
+    temperature:
+      name: "Temperatura"
+    humidity:
+      name: "Wilgotność"
+    update_interval: 5s
