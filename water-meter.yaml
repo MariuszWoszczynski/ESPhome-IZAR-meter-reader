@@ -45,8 +45,6 @@ text_sensor:
     return {my_custom_sensor->water_sensor, my_custom_sensor->id_sensor};
   text_sensors:
   - name: "Water meter usage"
-    filters:
-    - append: " L"
   - name: "Water meter ID"
 
 sensor:
