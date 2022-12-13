@@ -8,7 +8,6 @@ esphome:
   libraries:
     - SPI 
     - "https://github.com/maciekn/izar-wmbus-esp.git"
-    - "https://github.com/knolleary/pubsubclient.git"
     - "https://github.com/bblanchon/ArduinoJson.git"
 
 #esp8266:
@@ -36,15 +35,25 @@ wifi:
 
 captive_portal:
 
-sensor:
+
+
+text_sensor:
 - platform: custom
   lambda: |-
-    auto my_sensor = new MyCustomSensor();
-    App.register_component(my_sensor);
-    return {my_sensor->water_sensor, my_sensor->id_sensor}; 
-  sensors:
-  - name: "Water meter consumtion"
-    unit_of_measurement: l
-    accuracy_decimals: 0
-  - name: "Id licznika wody"
-    accuracy_decimals: 0
+    auto my_custom_sensor = new MyCustomSensor();
+    App.register_component(my_custom_sensor);
+    return {my_custom_sensor->water_sensor, my_custom_sensor->id_sensor};
+  text_sensors:
+  - name: "Water meter usage"
+  - name: "Water meter ID"
+
+sensor:
+- platform: dht
+  pin: D4  							#*****************use your pin***************************
+  model: DHT22
+  temperature:
+    name: "Temperature"
+  humidity:
+    name: Humidity"
+  update_interval: 5s
+
