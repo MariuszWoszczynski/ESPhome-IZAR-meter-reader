@@ -42,7 +42,7 @@ text_sensor:
       App.register_component(textsensor);
       return {textsensor->my_text_sensor};
     text_sensors:
-      - name: Id licznika wody      #text
+      - name: Meter ID                    #text HEX
         filters:
         - to_upper:
 
@@ -53,14 +53,14 @@ sensor:
       App.register_component(sensor);
       return {sensor->my_sensor};
     sensors:
-      - name: Stan licznika wody    #float value
+      - name: Water meter state          #float value
         unit_of_measurement: L
         accuracy_decimals: 0
-  - platform: dht     #DHT22 sensor
-    pin: D4           #*****************use your pin***************************
+  - platform: dht                       #DHT22 sensor
+    pin: D4                             #*****************use your pin***************************
     model: DHT22
     temperature:
-      name: "Temperatura"
+      name: "Temperature"
     humidity:
-      name: "Wilgotność"
+      name: "Humidity"
     update_interval: 5s
