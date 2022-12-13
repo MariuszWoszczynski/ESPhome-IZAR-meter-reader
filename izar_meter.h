@@ -4,7 +4,7 @@
 #include "izar_wmbus.h"
 
 
-//int  meterId = 0xFFFFFFFF;      //comment to determine the ID of your counter, enter the ID and uncomment the line 
+//int  meterId = 0xFFFFFFFF;      //comment to determine the ID of your counter, enter the ID (instead FFFFFFFF) and uncomment the line 
 
 int waterUsage_temp;
 int waterUsage;
