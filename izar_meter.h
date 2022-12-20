@@ -12,7 +12,7 @@ IzarWmbus reader;
 
 namespace MyTextData {
       TextSensor *my_text_sensor = new TextSensor();
-    };
+    }
     
 class MyTextSensor :public Component, public TextSensor {
       public:
